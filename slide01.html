@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封面页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+            overflow: hidden;
+        }
+        .title-font {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .subtitle-font {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="w-full h-full max-w-[1920px] max-h-[1080px] relative flex items-center justify-center p-16">
+        <!-- 主要内容区域 -->
+        <div class="w-3/4 h-full flex flex-col justify-center">
+            <!-- 主标题 -->
+            <div class="mb-12">
+                <h1 class="title-font text-6xl gradient-text leading-tight mb-8">
+                    Actor–Partner Interdependent Mediation Model of Disease Perception, Dyadic Coping, and Collaborative Management Among Couples Coping with Stroke
+                </h1>
+                <div class="w-32 h-1 bg-gradient-to-r from-blue-900 to-blue-600"></div>
+            </div>
+            
+            <!-- 作者信息 -->
+            <div class="mb-8">
+                <p class="subtitle-font text-2xl text-gray-700 mb-4">Presented by Saiyi Pu</p>
+                <p class="subtitle-font text-xl text-gray-600">Zhengzhou University</p>
+            </div>
+            
+            <!-- 会议信息 -->
+            <div class="text-lg text-gray-600">
+                <p class="mb-2">2024 International Conference on Stroke Rehabilitation</p>
+                <p>Hong Kong University, Hong Kong</p>
+            </div>
+        </div>
+        
+        <!-- 右侧模型示意图 -->
+        <div class="w-1/4 h-full flex items-center justify-center">
+            <div class="floating-element bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+                <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">APIMeM Framework</h3>
+                <div class="space-y-6">
+                    <!-- Patient DP -->
+                    <div class="flex items-center justify-center">
+                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">DP</div>
+                    </div>
+                    
+                    <!-- DC -->
+                    <div class="flex items-center justify-center">
+                        <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">DC</div>
+                    </div>
+                    
+                    <!-- CM -->
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">CM</div>
+                        <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">CM</div>
+                    </div>
+                </div>
+                <div class="mt-4 text-xs text-gray-600 text-center">
+                    <p>DP: Disease Perception</p>
+                    <p>DC: Dyadic Coping</p>
+                    <p>CM: Collaborative Management</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

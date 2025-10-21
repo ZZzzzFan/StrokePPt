@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大纲页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+            overflow: hidden;
+        }
+        .outline-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .outline-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0, 51, 102, 0.15);
+        }
+        .icon-gradient {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="w-full h-full max-w-[1920px] max-h-[1080px] p-16 flex flex-col justify-center">
+        <!-- 标题 -->
+        <div class="mb-16">
+            <h1 class="text-5xl font-bold text-gray-800 mb-6">Presentation Outline</h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-900 to-blue-600"></div>
+        </div>
+        
+        <!-- 主要内容网格 -->
+        <div class="grid grid-cols-2 gap-12">
+            <!-- 左列 -->
+            <div class="space-y-8">
+                <div class="outline-item bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-exclamation-triangle text-3xl icon-gradient mr-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800">Background & Research Gaps</h3>
+                    </div>
+                    <p class="text-gray-600 text-lg">Global stroke burden and dyadic management challenges</p>
+                </div>
+                
+                <div class="outline-item bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-project-diagram text-3xl icon-gradient mr-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800">Theoretical Framework</h3>
+                    </div>
+                    <p class="text-gray-600 text-lg">APIMeM model and research hypotheses</p>
+                </div>
+                
+                <div class="outline-item bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-table text-3xl icon-gradient mr-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800">Methods</h3>
+                    </div>
+                    <p class="text-gray-600 text-lg">Participants, measures, and analytical strategy</p>
+                </div>
+            </div>
+            
+            <!-- 右列 -->
+            <div class="space-y-8">
+                <div class="outline-item bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chart-line text-3xl icon-gradient mr-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800">Key Results</h3>
+                    </div>
+                    <p class="text-gray-600 text-lg">Correlations, model fit, and mediation effects</p>
+                </div>
+                
+                <div class="outline-item bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-comments text-3xl icon-gradient mr-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800">Discussion</h3>
+                    </div>
+                    <p class="text-gray-600 text-lg">Findings vs. literature and clinical implications</p>
+                </div>
+                
+                <div class="outline-item bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-flag text-3xl icon-gradient mr-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800">Conclusions</h3>
+                    </div>
+                    <p class="text-gray-600 text-lg">Summary and future directions</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 流程箭头 -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="text-6xl text-blue-600 opacity-30">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

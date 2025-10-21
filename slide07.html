@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法2 - 测量工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+            overflow: hidden;
+        }
+        .instrument-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            transition: all 0.3s ease;
+        }
+        .instrument-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 51, 102, 0.15);
+        }
+        .reliability-excellent {
+            background: linear-gradient(135deg, #00cc66 0%, #00ff88 100%);
+            color: white;
+        }
+        .reliability-good {
+            background: linear-gradient(135deg, #0066cc 0%, #0088ff 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="w-full h-full max-w-[1920px] max-h-[1080px] p-16 flex flex-col justify-center">
+        <!-- 标题 -->
+        <div class="mb-12">
+            <h1 class="text-5xl font-bold text-gray-800 mb-6">Methods: Measures</h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-900 to-blue-600 mb-8"></div>
+        </div>
+        
+        <!-- 主要工具表格 -->
+        <div class="instrument-card rounded-2xl p-8 shadow-lg mb-8">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-clipboard-list text-blue-600 mr-3"></i>
+                Instruments & Reliability
+            </h3>
+            
+            <div class="overflow-hidden rounded-xl border border-gray-200">
+                <table class="w-full">
+                    <thead class="bg-blue-50">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-lg font-semibold text-gray-800">Construct</th>
+                            <th class="px-6 py-4 text-left text-lg font-semibold text-gray-800">Instrument</th>
+                            <th class="px-6 py-4 text-center text-lg font-semibold text-gray-800">Items</th>
+                            <th class="px-6 py-4 text-center text-lg font-semibold text-gray-800">Cronbach's α</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-blue-600 rounded-full mr-3"></div>
+                                    <span class="text-gray-700 font-medium">Disease Perception (DP)</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700">Brief Illness Perception Questionnaire (BIPQ)</td>
+                            <td class="px-6 py-4 text-center text-gray-700">9</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="reliability-excellent px-3 py-1 rounded-full text-sm font-semibold">0.86/0.84</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-green-600 rounded-full mr-3"></div>
+                                    <span class="text-gray-700 font-medium">Dyadic Coping (DC)</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700">Dyadic Coping Inventory (DCI) - Cooperative</td>
+                            <td class="px-6 py-4 text-center text-gray-700">5</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="reliability-good px-3 py-1 rounded-full text-sm font-semibold">0.82/0.80</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-purple-600 rounded-full mr-3"></div>
+                                    <span class="text-gray-700 font-medium">Collaborative Management (CM)</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700">Couple Collaborative Management Questionnaire (CCMQ)</td>
+                            <td class="px-6 py-4 text-center text-gray-700">18</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="reliability-excellent px-3 py-1 rounded-full text-sm font-semibold">0.88/0.87</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-gray-600 rounded-full mr-3"></div>
+                                    <span class="text-gray-700 font-medium">Covariates</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700">Modified Rankin Scale + General Info</td>
+                            <td class="px-6 py-4 text-center text-gray-700">-</td>
+                            <td class="px-6 py-4 text-center text-gray-500">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- 底部说明 -->
+        <div class="grid grid-cols-2 gap-8">
+            <div class="instrument-card rounded-2xl p-6 shadow-lg">
+                <h4 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-globe text-green-600 mr-3"></i>
+                    Cultural Adaptation
+                </h4>
+                <p class="text-gray-700 text-lg">
+                    All instruments were culturally adapted to Chinese stroke populations through translation, back-translation, and pilot testing procedures.
+                </p>
+            </div>
+            
+            <div class="instrument-card rounded-2xl p-6 shadow-lg">
+                <h4 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-check-circle text-blue-600 mr-3"></i>
+                    Quality Assurance
+                </h4>
+                <p class="text-gray-700 text-lg">
+                    High reliability (Cronbach's α > 0.8) across all constructs ensures measurement quality and data validity.
+                </p>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

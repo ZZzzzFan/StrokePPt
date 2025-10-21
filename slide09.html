@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结果1 - 描述性统计与相关性</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.3/plotly.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+            overflow: hidden;
+        }
+        .result-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            transition: all 0.3s ease;
+        }
+        .result-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 51, 102, 0.15);
+        }
+        .significant {
+            color: #cc0000;
+            font-weight: bold;
+        }
+        .correlation-strong {
+            background: linear-gradient(135deg, #cc0000 0%, #ff3333 100%);
+            color: white;
+        }
+        .correlation-moderate {
+            background: linear-gradient(135deg, #ff6600 0%, #ff8833 100%);
+            color: white;
+        }
+        .correlation-weak {
+            background: linear-gradient(135deg, #0066cc 0%, #0088ff 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="w-full h-full max-w-[1920px] max-h-[1080px] p-16 flex">
+        <!-- 左侧：描述性统计 -->
+        <div class="w-1/2 pr-8 flex flex-col justify-center">
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">Results: Descriptive Stats & Correlations</h1>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-900 to-blue-600 mb-6"></div>
+            </div>
+            
+            <div class="result-card rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-table text-blue-600 mr-3"></i>
+                    Descriptive Statistics
+                </h3>
+                
+                <div class="overflow-hidden rounded-xl border border-gray-200">
+                    <table class="w-full">
+                        <thead class="bg-blue-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-lg font-semibold text-gray-800">Variable</th>
+                                <th class="px-6 py-4 text-center text-lg font-semibold text-gray-800">Patient</th>
+                                <th class="px-6 py-4 text-center text-lg font-semibold text-gray-800">Spouse</th>
+                                <th class="px-6 py-4 text-center text-lg font-semibold text-gray-800">p-value</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 text-gray-700 font-medium">DP Score</td>
+                                <td class="px-6 py-4 text-center text-gray-700">44.72±9.68</td>
+                                <td class="px-6 py-4 text-center text-gray-700">44.32±9.45</td>
+                                <td class="px-6 py-4 text-center text-gray-700">0.612</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 text-gray-700 font-medium">DC Score</td>
+                                <td class="px-6 py-4 text-center text-gray-700">13.20±4.50</td>
+                                <td class="px-6 py-4 text-center text-gray-700">13.82±4.28</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="significant">0.001**</span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 text-gray-700 font-medium">CM Score</td>
+                                <td class="px-6 py-4 text-center text-gray-700">66.69±11.38</td>
+                                <td class="px-6 py-4 text-center text-gray-700">63.89±10.61</td>
+                                <td class="px-6 py-4 text-center">
+                                    <span class="significant">&lt;0.001**</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-6 grid grid-cols-3 gap-4">
+                    <div class="text-center p-4 bg-blue-50 rounded-xl">
+                        <div class="text-2xl font-bold text-blue-600 mb-2">DP</div>
+                        <p class="text-sm text-gray-600">Disease Perception</p>
+                        <p class="text-xs text-gray-500">No significant difference</p>
+                    </div>
+                    <div class="text-center p-4 bg-green-50 rounded-xl">
+                        <div class="text-2xl font-bold text-green-600 mb-2">DC</div>
+                        <p class="text-sm text-gray-600">Dyadic Coping</p>
+                        <p class="text-xs text-gray-500">Spouses higher (p=0.001)</p>
+                    </div>
+                    <div class="text-center p-4 bg-purple-50 rounded-xl">
+                        <div class="text-2xl font-bold text-purple-600 mb-2">CM</div>
+                        <p class="text-sm text-gray-600">Collaborative Management</p>
+                        <p class="text-xs text-gray-500">Patients higher (p&lt;0.001)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右侧：相关性热图 -->
+        <div class="w-1/2 pl-8 flex flex-col justify-center">
+            <div class="result-card rounded-2xl p-8 shadow-lg mb-8">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-fire text-red-600 mr-3"></i>
+                    Key Correlations
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-red-50 rounded-xl">
+                        <div>
+                            <p class="font-semibold text-gray-800">Patient CM - Spouse CM</p>
+                            <p class="text-sm text-gray-600">Inter-couple collaboration</p>
+                        </div>
+                        <div class="correlation-strong px-4 py-2 rounded-full text-lg font-bold">
+                            r = 0.565**
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between p-4 bg-orange-50 rounded-xl">
+                        <div>
+                            <p class="font-semibold text-gray-800">Patient DP - Patient DC</p>
+                            <p class="text-sm text-gray-600">Actor effect pathway</p>
+                        </div>
+                        <div class="correlation-moderate px-4 py-2 rounded-full text-lg font-bold">
+                            r = -0.468**
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between p-4 bg-blue-50 rounded-xl">
+                        <div>
+                            <p class="font-semibold text-gray-800">Spouse DP - Patient DC</p>
+                            <p class="text-sm text-gray-600">Partner effect pathway</p>
+                        </div>
+                        <div class="correlation-weak px-4 py-2 rounded-full text-lg font-bold">
+                            r = -0.433**
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-gray-50 rounded-xl">
+                    <p class="text-sm text-gray-600 text-center">
+                        <span class="font-semibold">Key Finding:</span> Strong positive correlation between couple's CM levels supports dyadic interdependence
+                    </p>
+                </div>
+            </div>
+            
+            <div class="result-card rounded-2xl p-6 shadow-lg">
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">Correlation Matrix Overview</h4>
+                <div id="correlationHeatmap" style="height: 200px;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 创建相关性热图
+        const correlationData = [
+            [1.00, 0.70, -0.47, -0.33, 0.29, 0.11],
+            [0.70, 1.00, -0.43, -0.40, 0.26, 0.11],
+            [-0.47, -0.43, 1.00, 0.63, 0.13, 0.18],
+            [-0.33, -0.40, 0.63, 1.00, 0.07, 0.21],
+            [0.29, 0.26, 0.13, 0.07, 1.00, 0.57],
+            [0.11, 0.11, 0.18, 0.21, 0.57, 1.00]
+        ];
+        
+        const variables = ['Patient DP', 'Spouse DP', 'Patient DC', 'Spouse DC', 'Patient CM', 'Spouse CM'];
+        
+        const heatmapData = [{
+            z: correlationData,
+            x: variables,
+            y: variables,
+            type: 'heatmap',
+            colorscale: [
+                [0, '#cc0000'],
+                [0.5, '#ffffff'],
+                [1, '#0066cc']
+            ],
+            zmid: 0,
+            text: correlationData.map(row => row.map(val => val.toFixed(3))),
+            texttemplate: '%{text}',
+            textfont: {
+                size: 12,
+                color: 'black'
+            },
+            hoverongaps: false
+        }];
+        
+        const heatmapLayout = {
+            title: {
+                text: 'Correlation Matrix (N=422)',
+                font: {
+                    family: 'Inter',
+                    size: 16,
+                    color: '#374151'
+                }
+            },
+            xaxis: {
+                tickfont: {
+                    family: 'Inter',
+                    size: 10,
+                    color: '#6b7280'
+                }
+            },
+            yaxis: {
+                tickfont: {
+                    family: 'Inter',
+                    size: 10,
+                    color: '#6b7280'
+                }
+            },
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            margin: {
+                l: 80,
+                r: 40,
+                t: 60,
+                b: 80
+            }
+        };
+        
+        const config = {
+            displayModeBar: false,
+            responsive: true
+        };
+        
+        Plotly.newPlot('correlationHeatmap', heatmapData, heatmapLayout, config);
+    </script>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

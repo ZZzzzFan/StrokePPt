@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.3/plotly.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+            overflow: hidden;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="w-full h-full max-w-[1920px] max-h-[1080px] p-16 flex">
+        <!-- 左侧内容 -->
+        <div class="w-1/2 pr-8 flex flex-col justify-center">
+            <div class="mb-12">
+                <h1 class="text-5xl font-bold text-gray-800 mb-6 leading-tight">
+                    Background: Stroke as a Dyadic Challenge
+                </h1>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-900 to-blue-600 mb-8"></div>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="stat-card rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-red-600 font-bold text-xl">2nd</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Global Mortality Rank</h3>
+                            <p class="text-gray-600 text-lg">Stroke is the second leading cause of death worldwide</p>
+                            <p class="text-sm text-gray-500 mt-2">[WHO, 2023]</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-orange-600 font-bold text-xl">3rd</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">DALY Rank</h3>
+                            <p class="text-gray-600 text-lg">Third leading cause of disability-adjusted life-years</p>
+                            <p class="text-sm text-gray-500 mt-2">[Global Burden of Disease Study]</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-blue-600 font-bold text-xl">80%</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Spousal Caregiving</h3>
+                            <p class="text-gray-600 text-lg">Spouses serve as primary caregivers in post-acute rehabilitation</p>
+                            <p class="text-sm text-gray-500 mt-2">[Multiple studies, 2-4]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 p-6 bg-blue-50 rounded-xl border-l-4 border-blue-600">
+                <p class="text-lg text-gray-700">
+                    <span class="font-semibold text-blue-800">Key Challenge:</span> Traditional models focus on individual patients, ignoring the dyadic interdependence that shapes recovery outcomes.
+                </p>
+            </div>
+        </div>
+        
+        <!-- 右侧图表 -->
+        <div class="w-1/2 pl-8 flex flex-col justify-center">
+            <div class="stat-card rounded-2xl p-8 shadow-lg mb-8">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Global Stroke Burden</h3>
+                <div id="strokeChart" style="height: 300px;"></div>
+            </div>
+            
+            <div class="stat-card rounded-2xl p-6 shadow-lg">
+                <h4 class="text-xl font-semibold text-gray-800 mb-4 text-center">Dyadic Management Approach</h4>
+                <div class="flex items-center justify-center space-x-8">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold mb-3">Patient</div>
+                        <p class="text-gray-600">Active Participant</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-3xl text-blue-600 mb-2">↔</div>
+                        <p class="text-sm text-gray-500">Collaboration</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center text-white font-semibold mb-3">Spouse</div>
+                        <p class="text-gray-600">Primary Caregiver</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 创建中风负担图表
+        const data = [{
+            x: ['Mortality Rank', 'DALY Rank'],
+            y: [2, 3],
+            type: 'bar',
+            marker: {
+                color: ['#003366', '#0066cc'],
+                line: {
+                    width: 0
+                }
+            },
+            text: ['2nd', '3rd'],
+            textposition: 'auto',
+            textfont: {
+                size: 16,
+                color: 'white',
+                family: 'Inter'
+            }
+        }];
+        
+        const layout = {
+            title: {
+                text: 'WHO Global Health Statistics (2023)',
+                font: {
+                    family: 'Inter',
+                    size: 16,
+                    color: '#374151'
+                }
+            },
+            xaxis: {
+                title: {
+                    text: 'Health Impact Measures',
+                    font: {
+                        family: 'Inter',
+                        size: 14,
+                        color: '#6b7280'
+                    }
+                },
+                tickfont: {
+                    family: 'Inter',
+                    size: 12,
+                    color: '#6b7280'
+                }
+            },
+            yaxis: {
+                title: {
+                    text: 'Rank (Lower = More Severe)',
+                    font: {
+                        family: 'Inter',
+                        size: 14,
+                        color: '#6b7280'
+                    }
+                },
+                tickfont: {
+                    family: 'Inter',
+                    size: 12,
+                    color: '#6b7280'
+                },
+                range: [1, 4],
+                autorange: false
+            },
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            margin: {
+                l: 80,
+                r: 40,
+                t: 60,
+                b: 80
+            }
+        };
+        
+        const config = {
+            displayModeBar: false,
+            responsive: true
+        };
+        
+        Plotly.newPlot('strokeChart', data, layout, config);
+    </script>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

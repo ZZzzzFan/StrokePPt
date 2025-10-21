@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理论框架页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+            overflow: hidden;
+        }
+        .path-node {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .path-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .arrow-line {
+            stroke-width: 3;
+            transition: all 0.3s ease;
+        }
+        .arrow-line:hover {
+            stroke-width: 5;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="w-full h-full max-w-[1920px] max-h-[1080px] p-16 flex">
+        <!-- 左侧APIMeM模型图 -->
+        <div class="w-2/3 pr-8 flex flex-col justify-center">
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">Theoretical Framework: APIMeM & Hypotheses</h1>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-900 to-blue-600 mb-6"></div>
+            </div>
+            
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">Actor-Partner Interdependent Mediation Model</h3>
+                
+                <!-- SVG模型图 -->
+                <div class="flex justify-center">
+                    <svg width="800" height="500" viewBox="0 0 800 500">
+                        <!-- Patient DP -->
+                        <circle cx="200" cy="80" r="40" fill="#0066CC" class="path-node" id="patient-dp"/>
+                        <text x="200" y="85" text-anchor="middle" fill="white" font-size="14" font-weight="bold">DP</text>
+                        <text x="200" y="140" text-anchor="middle" fill="#374151" font-size="12">Patient</text>
+                        
+                        <!-- Spouse DP -->
+                        <circle cx="600" cy="80" r="40" fill="#FF6600" class="path-node" id="spouse-dp"/>
+                        <text x="600" y="85" text-anchor="middle" fill="white" font-size="14" font-weight="bold">DP</text>
+                        <text x="600" y="140" text-anchor="middle" fill="#374151" font-size="12">Spouse</text>
+                        
+                        <!-- Patient DC -->
+                        <circle cx="200" cy="250" r="40" fill="#009966" class="path-node" id="patient-dc"/>
+                        <text x="200" y="255" text-anchor="middle" fill="white" font-size="14" font-weight="bold">DC</text>
+                        <text x="200" y="310" text-anchor="middle" fill="#374151" font-size="12">Patient</text>
+                        
+                        <!-- Spouse DC -->
+                        <circle cx="600" cy="250" r="40" fill="#009966" class="path-node" id="spouse-dc"/>
+                        <text x="600" y="255" text-anchor="middle" fill="white" font-size="14" font-weight="bold">DC</text>
+                        <text x="600" y="310" text-anchor="middle" fill="#374151" font-size="12">Spouse</text>
+                        
+                        <!-- Patient CM -->
+                        <circle cx="200" cy="420" r="40" fill="#6633CC" class="path-node" id="patient-cm"/>
+                        <text x="200" y="425" text-anchor="middle" fill="white" font-size="14" font-weight="bold">CM</text>
+                        <text x="200" y="480" text-anchor="middle" fill="#374151" font-size="12">Patient</text>
+                        
+                        <!-- Spouse CM -->
+                        <circle cx="600" cy="420" r="40" fill="#6633CC" class="path-node" id="spouse-cm"/>
+                        <text x="600" y="425" text-anchor="middle" fill="white" font-size="14" font-weight="bold">CM</text>
+                        <text x="600" y="480" text-anchor="middle" fill="#374151" font-size="12">Spouse</text>
+                        
+                        <!-- Actor Effects (Solid Lines) -->
+                        <line x1="200" y1="120" x2="200" y2="210" stroke="#0066CC" class="arrow-line" marker-end="url(#arrowhead-blue)"/>
+                        <line x1="200" y1="290" x2="200" y2="380" stroke="#009966" class="arrow-line" marker-end="url(#arrowhead-green)"/>
+                        <line x1="600" y1="120" x2="600" y2="210" stroke="#FF6600" class="arrow-line" marker-end="url(#arrowhead-orange)"/>
+                        <line x1="600" y1="290" x2="600" y2="380" stroke="#009966" class="arrow-line" marker-end="url(#arrowhead-green)"/>
+                        
+                        <!-- Partner Effects (Dashed Lines) -->
+                        <line x1="240" y1="80" x2="560" y2="80" stroke="#0066CC" stroke-dasharray="5,5" class="arrow-line" marker-end="url(#arrowhead-blue)"/>
+                        <line x1="240" y1="250" x2="560" y2="250" stroke="#009966" stroke-dasharray="5,5" class="arrow-line" marker-end="url(#arrowhead-green)"/>
+                        <line x1="240" y1="80" x2="560" y2="250" stroke="#666666" stroke-dasharray="5,5" class="arrow-line" marker-end="url(#arrowhead-gray)"/>
+                        <line x1="560" y1="80" x2="240" y2="250" stroke="#666666" stroke-dasharray="5,5" class="arrow-line" marker-end="url(#arrowhead-gray)"/>
+                        
+                        <!-- Arrow markers -->
+                        <defs>
+                            <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#0066CC"/>
+                            </marker>
+                            <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#009966"/>
+                            </marker>
+                            <marker id="arrowhead-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#FF6600"/>
+                            </marker>
+                            <marker id="arrowhead-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#666666"/>
+                            </marker>
+                        </defs>
+                        
+                        <!-- Labels -->
+                        <text x="220" y="165" fill="#0066CC" font-size="12" font-weight="bold">Actor</text>
+                        <text x="220" y="335" fill="#009966" font-size="12" font-weight="bold">Actor</text>
+                        <text x="620" y="165" fill="#FF6600" font-size="12" font-weight="bold">Actor</text>
+                        <text x="620" y="335" fill="#009966" font-size="12" font-weight="bold">Actor</text>
+                        <text x="400" y="70" fill="#666666" font-size="12" font-weight="bold">Partner</text>
+                        <text x="400" y="240" fill="#666666" font-size="12" font-weight="bold">Partner</text>
+                    </svg>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        <span class="inline-block w-4 h-1 bg-blue-600 mr-2"></span>Actor Effect (Self → Self)
+                        <span class="inline-block w-4 h-1 bg-gray-600 ml-6 mr-2" style="border-top: 1px dashed;"></span>Partner Effect (Partner → Self)
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右侧假设 -->
+        <div class="w-1/3 pl-8 flex flex-col justify-center">
+            <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8">Research Hypotheses</h3>
+                
+                <div class="space-y-6">
+                    <div class="p-4 bg-red-50 rounded-xl border-l-4 border-red-600">
+                        <h4 class="text-xl font-semibold text-red-800 mb-2">H1</h4>
+                        <p class="text-gray-700 text-lg">Interdependent CM exists between patients and spouses</p>
+                    </div>
+                    
+                    <div class="p-4 bg-blue-50 rounded-xl border-l-4 border-blue-600">
+                        <h4 class="text-xl font-semibold text-blue-800 mb-2">H2</h4>
+                        <p class="text-gray-700 text-lg">DP predicts own/partner's CM (actor/partner effects)</p>
+                    </div>
+                    
+                    <div class="p-4 bg-green-50 rounded-xl border-l-4 border-green-600">
+                        <h4 class="text-xl font-semibold text-green-800 mb-2">H3</h4>
+                        <p class="text-gray-700 text-lg">DC mediates DP→CM pathways</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-4 bg-gray-50 rounded-xl">
+                    <p class="text-sm text-gray-600">
+                        <strong>Key Concepts:</strong><br>
+                        • <strong>Actor Effect:</strong> Individual's DP → own DC → own CM<br>
+                        • <strong>Partner Effect:</strong> Partner's DP → individual's DC → individual's CM
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>

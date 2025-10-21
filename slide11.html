@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>讨论页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+            overflow: hidden;
+        }
+        .discussion-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            transition: all 0.3s ease;
+        }
+        .discussion-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 51, 102, 0.15);
+        }
+        .intervention-step {
+            background: linear-gradient(135deg, #e6f2ff 0%, #f0f8ff 100%);
+            border: 2px solid #0066cc;
+            transition: all 0.3s ease;
+        }
+        .intervention-step:hover {
+            background: linear-gradient(135deg, #0066cc 0%, #0088ff 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+        .key-finding {
+            background: linear-gradient(135deg, #cc0000 0%, #ff3333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="w-full h-full max-w-[1920px] max-h-[1080px] p-16 flex flex-col justify-center">
+        <!-- 标题 -->
+        <div class="mb-12">
+            <h1 class="text-5xl font-bold text-gray-800 mb-6">Discussion: Key Findings & Implications</h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-900 to-blue-600 mb-8"></div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-12">
+            <!-- 左侧：关键发现 -->
+            <div class="discussion-card rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-lightbulb text-yellow-600 mr-3"></i>
+                    Key Findings vs. Literature
+                </h3>
+                
+                <div class="space-y-6">
+                    <div class="p-4 bg-blue-50 rounded-xl border-l-4 border-blue-600">
+                        <h4 class="font-semibold text-blue-800 mb-2">1. DP→DC→CM Mediation</h4>
+                        <p class="text-gray-700 text-lg">
+                            Aligns with <span class="key-finding font-semibold">Lyons' Dyadic Disease Management Theory</span> [14]
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 bg-red-50 rounded-xl border-l-4 border-red-600">
+                        <h4 class="font-semibold text-red-800 mb-2">2. Masking Effect</h4>
+                        <p class="text-gray-700 text-lg">
+                            Patient DP: Direct β=0.373*** vs. Indirect β=-0.127***
+                            <br><span class="text-sm text-gray-600">Over-focus on self undermines DC</span>
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 bg-green-50 rounded-xl border-l-4 border-green-600">
+                        <h4 class="font-semibold text-green-800 mb-2">3. Partner Effect</h4>
+                        <p class="text-gray-700 text-lg">
+                            Spouse's DP impacts patient's CM (β=0.239**)
+                            <br><span class="text-sm text-gray-600">Highlights dyadic intervention need</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧：实践建议 -->
+            <div class="discussion-card rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-users text-green-600 mr-3"></i>
+                    Couple-Centered Interventions
+                </h3>
+                
+                <div class="text-center mb-8">
+                    <div class="inline-block bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-2xl p-6 shadow-lg">
+                        <h4 class="text-2xl font-bold mb-2">Target Couples as a Unit</h4>
+                        <p class="text-lg">Transform individual coping into collaborative action</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="intervention-step rounded-xl p-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-brain text-2xl mr-4"></i>
+                            <div>
+                                <h5 class="font-semibold text-lg">1. Cognitive Education</h5>
+                                <p class="text-gray-600">Optimize DP through disease knowledge</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="intervention-step rounded-xl p-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-handshake text-2xl mr-4"></i>
+                            <div>
+                                <h5 class="font-semibold text-lg">2. DC Skill Training</h5>
+                                <p class="text-gray-600">Communication & joint decision-making</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="intervention-step rounded-xl p-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-target text-2xl mr-4"></i>
+                            <div>
+                                <h5 class="font-semibold text-lg">3. CM Goal-Setting</h5>
+                                <p class="text-gray-600">Shared rehabilitation plans</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部总结 -->
+        <div class="mt-8 discussion-card rounded-2xl p-6 shadow-lg">
+            <div class="text-center">
+                <p class="text-xl text-gray-700">
+                    <span class="font-semibold text-blue-800">Clinical Translation:</span> 
+                    Healthcare providers should adopt <span class="key-finding font-semibold">couple-centered strategies</span> 
+                    by assessing both partners' DP, enhancing DC skills, and promoting family-based collaboration
+                </p>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            window.parent.postMessage('go-next', '*');
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.parent.postMessage('go-prev', '*');
+        }
+    });
+</script>
+</body>
+</html>
